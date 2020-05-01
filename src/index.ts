@@ -3,13 +3,14 @@ import { TiledResource } from "@excaliburjs/excalibur-tiled";
 import { Physics, Body, Collider, Vector, Color, Input, BoundingBox } from 'excalibur';
 
 const game = new ex.Engine();
-const map = new TiledResource("/static/bigmap.json");
-const loader = new ex.Loader([map]);
+const map = new TiledResource("/static/map.json");
+const bigMap = new TiledResource("/static/bigmap.json");
+const loader = new ex.Loader([bigMap]);
 
 game.start(loader).then(() => {
 
   // Set up map
-  let tm = map.getTileMap();
+  let tm = bigMap.getTileMap();
   const tmWidth = tm.cols * tm.cellWidth;
   const tmHeight = tm.rows * tm.cellHeight;
   game.add(tm);
