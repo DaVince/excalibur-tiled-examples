@@ -1,49 +1,8 @@
-import * as ex from "excalibur";
-import { TiledResource } from "@excaliburjs/excalibur-tiled";
-import { Physics, Body, Collider, Vector, Color, Input, BoundingBox } from 'excalibur';
+import { Engine } from "excalibur";
+export const game = new Engine();
 
-const game = new ex.Engine();
-const map = new TiledResource("/static/map.json");
-const bigMap = new TiledResource("/static/bigmap.json");
-const loader = new ex.Loader([bigMap]);
+// Please uncomment one of the following to pick an example to display.
 
-game.start(loader).then(() => {
+import './example-bigMap-camera';
+// import './example-load-map';
 
-  // Set up map
-  let tm = bigMap.getTileMap();
-  const tmWidth = tm.cols * tm.cellWidth;
-  const tmHeight = tm.rows * tm.cellHeight;
-  game.add(tm);
-  
-  // Set up actor
-  const actor = new ex.Actor(game.halfDrawWidth, game.halfDrawHeight, 32, 32, Color.Red);
-  game.add(actor);
-  
-  // Set up camera
-  game.currentScene.camera.strategy.lockToActor(actor);
-  game.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, tmWidth, tmHeight));
-
-  // Allow actor to move around using arrow keys
-  const actorSpeed = 300;
-  game.input.keyboard.on('hold', e => {
-    switch (e.key) {
-      case Input.Keys.Left:
-        actor.vel.x = -actorSpeed;
-        break;
-      case Input.Keys.Right:
-        actor.vel.x = actorSpeed;
-        break;
-      case Input.Keys.Up:
-        actor.vel.y = -actorSpeed;
-        break;
-      case Input.Keys.Down:
-        actor.vel.y = actorSpeed;
-        break;
-    }
-  });
-  game.input.keyboard.on('release', () => {
-    actor.vel.x = 0;
-    actor.vel.y = 0;
-  });
-
-});
