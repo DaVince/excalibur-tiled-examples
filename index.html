@@ -1,15 +1,24 @@
 <html>
+	<head>
+		<title>Parcel Sandbox</title>
+		<meta charset="UTF-8" />
+		<style>
+			button {
+				padding: 10px;
+				background: #eee;
+			}
+		</style>
+	</head>
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
+	<body>
+		<div id="app"></div>
 
-<body>
-	<div id="app"></div>
-
-	<script src="src/index.ts">
-	</script>
-</body>
-
+		<h2>Pick your example</h2>
+		<div id="buttons">
+			<button value="BasicMapExample">Basic map</button>
+			<button value="BigMapExample">Big scrollable map with boundaries</button>
+		</div>
+		
+		<script src="src/index.ts"></script>
+	</body>
 </html>
