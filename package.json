@@ -1,0 +1,22 @@
+{
+  "name": "excalibur-tiled-example",
+  "version": "1.0.0",
+  "description": "Vanilla TS with Excalibur loading a Tiled map",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "@excaliburjs/excalibur-tiled": "2.3.1",
+    "excalibur": "0.23.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1",
+    "typescript": "^3.8.3"
+  },
+  "keywords": [
+    "excaliburjs",
+    "typescript"
+  ]
+}
