@@ -4,7 +4,8 @@
   "description": "Vanilla TS with Excalibur loading a Tiled map",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "npm run copy && parcel index.html --open",
+    "copy": "cp -rf static dist/static",
     "build": "parcel build index.html"
   },
   "dependencies": {
