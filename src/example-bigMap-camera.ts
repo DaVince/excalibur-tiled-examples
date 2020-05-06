@@ -1,4 +1,4 @@
-import { Color, Input, BoundingBox, Actor, Loader } from 'excalibur';
+import { Color, Input, BoundingBox, Actor, Loader, LimitCameraBoundsStrategy } from 'excalibur';
 import { TiledResource } from "@excaliburjs/excalibur-tiled";
 import { game } from './index';
 
@@ -25,7 +25,8 @@ export function BigMapExample() {
     
     // Set up camera
     game.currentScene.camera.strategy.lockToActor(actor);
-    game.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, tmWidth, tmHeight));
+    let camStrat = new LimitCameraBoundsStrategy(new BoundingBox(0, 0, tmWidth, tmHeight));
+    game.currentScene.camera.addStrategy(camStrat);
   
     // Allow actor to move around using arrow keys
     const actorSpeed = 300;
@@ -43,6 +44,14 @@ export function BigMapExample() {
         case Input.Keys.Down:
           actor.vel.y = actorSpeed;
           break;
+        case 189: // -
+          camStrat.target.right -= 10;
+          break;
+        case 187: // =
+          camStrat.target.right += 10;
+          break;
+        default:
+          console.log('Pressed', e.key);
       }
     });
     game.input.keyboard.on('release', () => {
