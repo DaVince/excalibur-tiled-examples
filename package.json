@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run copy && parcel index.html --open",
-    "copy": "cp -rf static dist/",
+    "copy": "cp -rf static dist/static",
     "build": "parcel build index.html"
   },
   "dependencies": {
